@@ -6,10 +6,10 @@ const Header = () => {
     <h1>Welcome to Rick and Morty APP</h1>
     <nav>
       <ul className={styles.menu}>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Characters</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/personajes">Characters</a></li>
+        <li><a href="/sobre-nosotros">About Us</a></li>
+        <li><a href="/contacto">Contact</a></li>
       </ul>
     </nav>
   </header>
