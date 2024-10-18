@@ -1,6 +1,9 @@
 import React from 'react'
 
-const Card = () => {
+const Card = (props) => {
+
+  const character = props.character
+  
   return (
     <div key={character.id}>
     <div>

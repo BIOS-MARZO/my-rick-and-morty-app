@@ -36,7 +36,7 @@ const Characters = () => {
         <p>{errorMessage}</p>
       ) : (
         characters.map((character) => (
-          <Card />
+          <Card key={character.id} character={character} />
         ))
       )}
     </div>
