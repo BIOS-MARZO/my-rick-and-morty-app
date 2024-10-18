@@ -1,0 +1,15 @@
+@import '../../pages/home/styles.module.scss';
+
+.header {
+  height: 10vh;
+  grid-area: header;
+  @include section-style(rgb(246, 174, 174));
+
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    gap: 16px;
+  }
+}
