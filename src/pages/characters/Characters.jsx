@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./components/card/Card";
 
 const Characters = () => {
@@ -20,7 +20,7 @@ const Characters = () => {
       } catch (error) {
         console.error(error);
         setErrorMessage(
-          "Oye algo salio mal, no podemos cargar los personajes 😥"
+          "Oye algo salió mal, no podemos cargar los personajes 😥"
         );
       }
     };
@@ -36,7 +36,7 @@ const Characters = () => {
         <p>{errorMessage}</p>
       ) : (
         characters.map((character) => (
-          <Card />
+          <Card key={character.id} character={character} />
         ))
       )}
     </div>
