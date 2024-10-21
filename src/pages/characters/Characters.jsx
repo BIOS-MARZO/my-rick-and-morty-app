@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./components/card/Card";
+import styles from "./styles.module.scss";
 
 const Characters = () => {
   const charactersInitialState = [];
@@ -9,7 +10,12 @@ const Characters = () => {
   const [characters, setCharacters] = useState(charactersInitialState);
   const [errorMessage, setErrorMessage] = useState(errorInitialState);
 
+  const handleCharacterClick = (id) => {
+    console.log(`Character ${id} clicked`);
+  }
+
   useEffect(() => {
+   
     const fetchCharacters = async () => {
       try {
         const { data } = await axios.get(
@@ -31,14 +37,15 @@ const Characters = () => {
   return (
     <div>
       <h2>Personajes</h2>
-
-      {errorMessage.length > 0 ? (
-        <p>{errorMessage}</p>
-      ) : (
-        characters.map((character) => (
-          <Card key={character.id} character={character} />
-        ))
-      )}
+      <div className={styles.wrapperCharacters}>
+        {errorMessage.length > 0 ? (
+          <p>{errorMessage}</p>
+        ) : (
+          characters.map((character) => (
+            <Card key={character.id} character={character} onClick={() => {handleCharacterClick(character.id)}} />
+          ))
+        )}
+      </div>
     </div>
   );
 };
