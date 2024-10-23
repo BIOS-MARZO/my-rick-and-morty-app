@@ -14,7 +14,7 @@ const Card = ({ character, onClick }) => {
         />
       </div>
       <div className={styles.cardInfo}>
-        <h6 className={styles.characterName}>Nombre: {character.name}</h6>
+        <h6 className={styles.characterName}>{character.name}</h6>
         <span className={styles.characterStatus}>
           Estado: {character.status}
         </span>
