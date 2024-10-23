@@ -44,7 +44,7 @@ const Characters = () => {
                 key={character.id}
                 character={character}
                 onClick={() => handleCharacterClick(character.id)}
-                className={styles.character} // Aplicar clase para el Card
+                className={styles.character}
               />
             ))
           )}

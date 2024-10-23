@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import styles from "./styles.module.scss"; // Importación correcta de módulos SCSS
+import styles from "./styles.module.scss";
 
 const Card = ({ character, onClick }) => {
   if (!character) return null;
