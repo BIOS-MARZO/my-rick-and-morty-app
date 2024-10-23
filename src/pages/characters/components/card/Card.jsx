@@ -1,26 +1,37 @@
 import PropTypes from "prop-types";
+import styles from "./styles.module.scss"; // Importación correcta de módulos SCSS
 
-const Card = ({ character }) => {
-  // Desestructuración correcta de la prop character
-  if (!character) return null; // Evita errores en caso de que character sea undefined
+const Card = ({ character, onClick }) => {
+  if (!character) return null;
 
   return (
-    <div>
+    <div className={styles.character} onClick={onClick}>
       <div>
-        <img src={character.image} alt={character.name} />
+        <img
+          src={character.image}
+          alt={character.name}
+          className={styles.characterImage}
+        />
       </div>
-      <div>
-        <h6>Nombre: {character.name}</h6>
-        <span>Estado: {character.status}</span>
-        <span>Especie: {character.species}</span>
-        <span>Género: {character.gender}</span>
-        <span>Origen: {character.origin.name}</span>
+      <div className={styles.cardInfo}>
+        <h6 className={styles.characterName}>Nombre: {character.name}</h6>
+        <span className={styles.characterStatus}>
+          Estado: {character.status}
+        </span>
+        <span className={styles.characterSpecies}>
+          Especie: {character.species}
+        </span>
+        <span className={styles.characterGender}>
+          Género: {character.gender}
+        </span>
+        <span className={styles.characterOrigin}>
+          Origen: {character.origin.name}
+        </span>
       </div>
     </div>
   );
 };
 
-// Definición de los tipos de las props
 Card.propTypes = {
   character: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -33,6 +44,7 @@ Card.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Card;
