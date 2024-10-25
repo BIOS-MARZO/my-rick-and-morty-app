@@ -1,43 +1,35 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 const DetailCharacter = () => {
   const [character, setCharacter] = useState({});
-  const { characterId } = useParams(); // Acceso correcto al parámetro
+  const { characterId } = useParams();
+
+  console.log('Parametros por URL', characterId);
 
   useEffect(() => {
-    const fetchCharacter = async () => {
+    const fetchCharacters = async () => {
       try {
         const { data } = await axios.get(
           `https://rickandmortyapi.com/api/character/${characterId}`
         );
+        // console.log(data);
         setCharacter(data);
       } catch (error) {
         console.error(error);
+        // setErrorMessage(
+        //   "Oye algo salió mal, no podemos cargar los personajes 😥"
+        // );
       }
     };
 
-    fetchCharacter();
-  }, [characterId]); // Dependencia para ejecutar el efecto cuando characterId cambie
+    fetchCharacters();
+  }, []);
 
+  console.log("Personaje desde la variable character que es un estado", character);
   return (
-    <div>
-      <h1>Detalles del Personaje</h1>
-      {character.name ? (
-        <div>
-          <img src={character.image} alt={character.name} />
-          <h2>{character.name}</h2>
-          <p>Estado: {character.status}</p>
-          <p>Especie: {character.species}</p>
-          <p>Género: {character.gender}</p>
-          <p>Origen: {character.origin?.name}</p>
-        </div>
-      ) : (
-        <p>Cargando...</p>
-      )}
-    </div>
-  );
-};
+    <div>DetailCharacter</div>
+  )
+}
 
-export default DetailCharacter;
+export default DetailCharacter
