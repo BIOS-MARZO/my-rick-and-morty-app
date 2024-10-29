@@ -23,6 +23,26 @@ body {
   width: 100%;
 }
 
+.wrapperCharacter {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.title {
+  font-family: "Londrina Sketch", sans-serif;
+  font-weight: 400;
+  font-size: 5em;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
+  color: $primary-color;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -65,25 +85,6 @@ body {
     & + & {
       margin-left: 10px;
     }
-  }
-
-  .title {
-    font-family: "Londrina Sketch", sans-serif;
-    font-weight: 400;
-    font-size: 5em;
-    margin-bottom: 20px;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    text-decoration: underline;
-    color: $primary-color;
-  }
-
-  h2 {
-    font-size: 3rem;
-    color: $primary-color;
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .list {

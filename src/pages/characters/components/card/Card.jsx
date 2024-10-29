@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
 
-const Card = ({ character, onClick }) => {
+const Card = ({ character, onClick, isShowDetails }) => {
   if (!character) return null;
 
   return (
@@ -24,27 +23,28 @@ const Card = ({ character, onClick }) => {
         <span className={styles.characterGender}>
           Género: {character.gender}
         </span>
-        <span className={styles.characterOrigin}>
-          Origen: {character.origin.name}
-        </span>
+
+        {isShowDetails && (
+          <>
+            <span className={styles.characterOrigin}>
+              Origen: {character.origin.name}
+            </span>
+            <span className={styles.characterOrigin}>
+              Lugar: {character.location.name}
+            </span>
+            <span className={styles.characterOrigin}>
+              Episodios:
+            </span>
+            {character.episode.map((episode, index) => (
+              <span key={index} className={styles.characterOrigin}>
+                <a href={episode}>Episodio {index + 1}</a>
+              </span>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
-};
-
-Card.propTypes = {
-  character: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    species: PropTypes.string.isRequired,
-    gender: PropTypes.string.isRequired,
-    origin: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default Card;

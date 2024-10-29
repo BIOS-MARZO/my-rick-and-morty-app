@@ -74,7 +74,6 @@ const Characters = () => {
                   onClick={function () {
                     handleCharacterClick(character.id);
                   }}
-                  className={styles.character}
                 />
               );
             })

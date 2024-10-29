@@ -1,24 +1,28 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from "./pages/home/Home"
-import Characters from "./pages/characters/Characters"
-import DefaultPage from "./pages/defaultPage/DefaultPage"
-import DetailCharacter from "./pages/detailCharacters/DetailCharacter"
+import { BrowserRouter } from "react-router-dom";
+import PrivateRoutes from "./routes/private.routes";
+import PublicRoutes from "./routes/public.routes";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("")
+    setIsAuthenticated(token)
+    if (token) {
+      return
+    }
+  }, [isAuthenticated])
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="personajes" >
-          <Route index element={<Characters />} />
-          <Route path="info/:characterId" element={<DetailCharacter />} />
-        </Route>
-        
-        <Route path="*" element={<DefaultPage />} />
-      </Routes>
+      {isAuthenticated.length > 0 ? (
+        <PrivateRoutes />
+      ) : (
+        <PublicRoutes />
+      )}
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import styles from "../characters/styles.module.scss"
+import Card from "../characters/components/card/Card";
 
 const DetailCharacter = () => {
   const [character, setCharacter] = useState({});
@@ -22,20 +24,15 @@ const DetailCharacter = () => {
   }, [characterId]); // Dependencia para ejecutar el efecto cuando characterId cambie
 
   return (
-    <div>
-      <h1>Detalles del Personaje</h1>
-      {character.name ? (
-        <div>
-          <img src={character.image} alt={character.name} />
-          <h2>{character.name}</h2>
-          <p>Estado: {character.status}</p>
-          <p>Especie: {character.species}</p>
-          <p>Género: {character.gender}</p>
-          <p>Origen: {character.origin?.name}</p>
+    <div className={styles.general}>
+      <div className={styles.wrapperCharacter}>
+        <h2 className={styles.title}>Detalles del Personaje</h2>
+        {character.name ? (
+          <Card character={character} isShowDetails />
+        ) : (
+          <p>Cargando...</p>
+        )}
         </div>
-      ) : (
-        <p>Cargando...</p>
-      )}
     </div>
   );
 };
